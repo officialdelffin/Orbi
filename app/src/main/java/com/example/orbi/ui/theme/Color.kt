@@ -1,11 +1,14 @@
 package com.example.orbi.ui.theme
 
+
+// Importações
 import androidx.compose.ui.graphics.Color
 
-val Purple80 = Color(0xFFD0BCFF)
-val PurpleGrey80 = Color(0xFFCCC2DC)
-val Pink80 = Color(0xFFEFB8C8)
 
-val Purple40 = Color(0xFF6650a4)
-val PurpleGrey40 = Color(0xFF625b71)
-val Pink40 = Color(0xFF7D5260)
+// Definindo os valores hexadecimais puros da paleta do aplicativo :
+val OrbiDarkBrown = Color(0xFF7A6448)
+val OrbiCream = Color(0xFFF9F4E3)
+val OrbiLightOlive = Color(0xFFD4DDB1)
+val OrbiOlive = Color(0xFFB1BA8E)
+val OrbiSand = Color(0xFFCDB28A)
+val OrbiWhite = Color(0xFFFFFFFF)
