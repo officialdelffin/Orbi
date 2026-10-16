@@ -1,8 +1,9 @@
-// Substituindo integralmente o arquivo build.gradle.kts do app para corrigir erros de sintaxe :
+// Arquivo de build de nível de módulo contendo a aplicação dos plugins e dependências :
 
 plugins {
 
     alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.hilt.android)
     alias(libs.plugins.ksp)
