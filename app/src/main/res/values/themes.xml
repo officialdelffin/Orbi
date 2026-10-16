@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
 
-    <style name="Theme.Orbi" parent="android:Theme.Material.Light.NoActionBar" />
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+
+    <!-- Aplicando as cores ao tema sem ActionBar para um visual moderno : -->
+    <style name="Theme.Orbi" parent="Theme.MaterialComponents.Light.NoActionBar">
+
+        <item name="colorPrimary">@color/orbi_dark_brown</item>
+        <item name="colorPrimaryVariant">@color/orbi_olive</item>
+        <item name="colorOnPrimary">@color/orbi_white</item>
+        <item name="colorSecondary">@color/orbi_olive</item>
+        <item name="colorSecondaryVariant">@color/orbi_light_olive</item>
+        <item name="colorOnSecondary">@color/orbi_white</item>
+        <item name="android:statusBarColor">@color/orbi_cream</item>
+        <item name="android:windowLightStatusBar">true</item>
+
+
+    </style>
+
+
 </resources>
