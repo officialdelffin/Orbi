@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<!-- Seletor responsavel por alternar entre o ponto e a pilula expandida : -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item android:state_selected="true">
+
+
+        <shape android:shape="rectangle">
+
+
+            <corners android:radius="4dp" />
+            <solid android:color="@color/orbi_olive" />
+            <size android:width="24dp" android:height="8dp" />
+
+
+        </shape>
+
+
+    </item>
+
+
+    <item>
+
+
+        <shape android:shape="oval">
+
+
+            <solid android:color="@color/orbi_light_olive" />
+            <size android:width="8dp" android:height="8dp" />
+
+
+        </shape>
+
+
+    </item>
+
+
+</selector>
