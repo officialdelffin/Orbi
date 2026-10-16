@@ -1,47 +1,42 @@
 package com.example.orbi
 
+
+// Importações :
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import com.example.orbi.ui.theme.OrbiTheme
 
+
+// Definindo a atividade principal e ponto de entrada do aplicativo :
 class MainActivity : ComponentActivity() {
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
+
         super.onCreate(savedInstanceState)
+
+
+        // Habilitando o layout de ponta a ponta na tela e configurando o conteúdo visual com o tema global do Orbi :
         enableEdgeToEdge()
         setContent {
+
+
+            // O NavHost e o gerenciamento de rotas serão inseridos aqui futuramente :
             OrbiTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+
+
+
+
             }
+
+
         }
-    }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    OrbiTheme {
-        Greeting("Android")
     }
+
+
 }
