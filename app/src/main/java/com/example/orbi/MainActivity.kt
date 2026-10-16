@@ -3,14 +3,16 @@ package com.example.orbi
 
 // Importações :
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import com.example.orbi.ui.theme.OrbiTheme
+import androidx.appcompat.app.AppCompatActivity
+import com.example.orbi.databinding.ActivityMainBinding
 
 
-// Definindo a atividade principal e ponto de entrada do aplicativo :
-class MainActivity : ComponentActivity() {
+// Gerenciando a tela hospedeira principal do aplicativo :
+class MainActivity : AppCompatActivity() {
+
+
+    // Declarando a variavel de ligacao com o layout XML :
+    private lateinit var binding: ActivityMainBinding
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,21 +21,9 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
 
-        // Habilitando o layout de ponta a ponta na tela e configurando o conteúdo visual com o tema global do Orbi :
-        enableEdgeToEdge()
-        setContent {
-
-
-            // O NavHost e o gerenciamento de rotas serão inseridos aqui futuramente :
-            OrbiTheme {
-
-
-
-
-            }
-
-
-        }
+        // Inflando o layout XML e conectando os elementos visuais a Activity e definindo a view raiz na tela :
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
 
     }
