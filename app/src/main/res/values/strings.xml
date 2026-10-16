@@ -1,3 +1,29 @@
+<!-- Centralizando todos os textos do aplicativo para facilitar a manutenção e tradução : -->
 <resources>
+
+
     <string name="app_name">Orbi</string>
+
+
+    <!-- Textos da Tela de Onboarding Um : -->
+    <string name="onboarding_title_one">Tempo que se adapta a você</string>
+    <string name="onboarding_desc_one">Gerencie rotinas e construa ciclos de produtividade fluidos, sem a rigidez dos cronômetros tradicionais.</string>
+
+
+    <!-- Textos da Tela de Onboarding Dois : -->
+    <string name="onboarding_title_two">Foco e descanso equilibrados</string>
+    <string name="onboarding_desc_two">Crie pausas personalizadas para recarregar sua energia da melhor forma possível.</string>
+
+
+    <!-- Textos da Tela de Onboarding Tres : -->
+    <string name="onboarding_title_three">Acompanhe sua evolução</string>
+    <string name="onboarding_desc_three">Visualize seu progresso e mantenha a consistência nos seus objetivos diários.</string>
+
+
+    <!-- Textos dos Botões do Onboarding: -->
+    <string name="btn_next">Próximo</string>
+    <string name="btn_back">Voltar</string>
+    <string name="btn_start">Começar</string>
+
+
 </resources>
