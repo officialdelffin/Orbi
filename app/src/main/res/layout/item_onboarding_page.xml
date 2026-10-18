@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<!-- Layout individual exibido dentro do ViewPager2 para cada pagina do onboarding : -->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/orbi_cream"
+    android:padding="24dp">
+
+
+    <!-- Container da imagem com bordas arredondadas : -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_image_container"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="0dp"
+        app:strokeWidth="0dp"
+        app:layout_constraintDimensionRatio="1:1.2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <ImageView
+            android:id="@+id/iv_onboarding_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            tools:src="@drawable/img_onboarding_one" />
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <!-- Titulo do passo : -->
+    <TextView
+        android:id="@+id/tv_onboarding_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:textColor="@color/orbi_dark_brown"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card_image_container"
+        tools:text="Tempo que se adapta a você" />
+
+
+    <!-- Descricao detalhada : -->
+    <TextView
+        android:id="@+id/tv_onboarding_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/orbi_dark_brown"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_onboarding_title"
+        tools:text="Gerencie rotinas e construa ciclos de produtividade fluidos, sem a rigidez dos cronômetros tradicionais." />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

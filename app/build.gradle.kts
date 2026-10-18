@@ -47,6 +47,15 @@ android {
 
     }
 
+    // Alinhando o compilador do Kotlin para a mesma versao 11 do Java :
+    kotlinOptions {
+
+
+        jvmTarget = "11"
+
+
+    }
+
     // Ativando o ViewBinding e removendo o Compose :
 
     buildFeatures {
