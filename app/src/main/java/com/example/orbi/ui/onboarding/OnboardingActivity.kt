@@ -17,6 +17,8 @@ import com.example.orbi.databinding.ActivityOnboardingBinding
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import android.content.Intent
+import com.example.orbi.ui.login.LoginActivity
 
 
 // Activity responsavel pela experiencia de onboarding do usuario :
@@ -25,11 +27,7 @@ class OnboardingActivity : AppCompatActivity() {
 
 
     private lateinit var binding: ActivityOnboardingBinding
-
-
     private val viewModel: OnboardingViewModel by viewModels()
-
-
     private lateinit var adapter: OnboardingAdapter
 
 
@@ -37,22 +35,10 @@ class OnboardingActivity : AppCompatActivity() {
 
 
         super.onCreate(savedInstanceState)
-
-
-        // Inflando a visualizacao principal com ViewBinding :
         binding = ActivityOnboardingBinding.inflate(layoutInflater)
-
-
         setContentView(binding.root)
-
-
-        // Inicializando os componentes de UI e observadores :
         setupViewPager()
-
-
         setupClickListeners()
-
-
         observeViewModel()
 
 
@@ -204,7 +190,17 @@ class OnboardingActivity : AppCompatActivity() {
     private fun finishOnboarding() {
 
 
-        // Redirecionamento para a tela de Login nos proximos passos :
+        // Inicia a tela de Login
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+
+
+        // Ativa a animação: A nova cai de cima (slide_in_down) e a atual esmaece (fade_out)
+        overridePendingTransition(R.anim.slide_in_down, R.anim.fade_out)
+
+
+        // Encerra o Onboarding para o usuário não voltar pra cá
+        finish()
 
 
     }
