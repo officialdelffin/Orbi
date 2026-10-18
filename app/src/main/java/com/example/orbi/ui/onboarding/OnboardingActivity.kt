@@ -62,13 +62,7 @@ class OnboardingActivity : AppCompatActivity() {
 
 
         adapter = OnboardingAdapter(viewModel.pages)
-
-
         binding.vpOnboarding.adapter = adapter
-
-
-        // Sincronizando o indicador de paginas ao ViewPager2 :
-        TabLayoutMediator(binding.tlPageIndicator, binding.vpOnboarding) { _, _ -> }.attach()
 
 
         // Escutando a transicao de paginas :
@@ -79,8 +73,6 @@ class OnboardingActivity : AppCompatActivity() {
 
 
                 super.onPageSelected(position)
-
-
                 viewModel.updatePage(position)
 
 
