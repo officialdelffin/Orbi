@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
+<!-- Configurando o tema base da aplicacao com Material Components : -->
 <resources xmlns:tools="http://schemas.android.com/tools">
-
 
     <!-- Aplicando as cores ao tema sem ActionBar para um visual moderno : -->
     <style name="Theme.Orbi" parent="Theme.MaterialComponents.Light.NoActionBar">
@@ -13,11 +11,15 @@
         <item name="colorSecondary">@color/orbi_olive</item>
         <item name="colorSecondaryVariant">@color/orbi_light_olive</item>
         <item name="colorOnSecondary">@color/orbi_white</item>
+
+        <!-- Pintando a barra de status (topo) com a cor creme e os icones de escuro : -->
         <item name="android:statusBarColor">@color/orbi_cream</item>
         <item name="android:windowLightStatusBar">true</item>
 
+        <!-- Pintando a barra de navegacao (rodape) com a cor creme e os icones de escuro : -->
+        <item name="android:navigationBarColor">@color/orbi_cream</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
 
     </style>
-
 
 </resources>
