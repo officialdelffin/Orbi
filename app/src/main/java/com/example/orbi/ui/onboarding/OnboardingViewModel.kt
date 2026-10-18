@@ -31,14 +31,14 @@ class OnboardingViewModel @Inject constructor() : ViewModel() {
 
 
         OnboardingPage(
-            imageRes = R.drawable.img_onboarding_one,
+            imageRes = R.drawable.img_onboarding_two,
             titleRes = R.string.onboarding_title_two,
             descriptionRes = R.string.onboarding_desc_two
         ),
 
 
         OnboardingPage(
-            imageRes = R.drawable.img_onboarding_one,
+            imageRes = R.drawable.img_onboarding_three,
             titleRes = R.string.onboarding_title_three,
             descriptionRes = R.string.onboarding_desc_three
         )
