@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/orbi_olive"
+    android:padding="0dp">
+
+    <!-- Título Principal -->
+    <TextView
+        android:id="@+id/tv_login_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="16dp"
+        android:text="Bem-vindo novamente"
+        android:textColor="@color/orbi_white"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tv_login_desc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Descrição -->
+    <TextView
+        android:id="@+id/tv_login_desc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginEnd="35dp"
+        android:text="Acesse sua conta para sincronizar seus ciclos de foco e manter sua produtividade em dia."
+        android:textColor="@color/orbi_cream"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Botão Logar com Google -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_google_login"
+        android:layout_width="0dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:backgroundTint="@color/orbi_cream"
+        android:gravity="start|center_vertical"
+        android:paddingStart="25dp"
+        android:paddingEnd="25dp"
+        android:text="Entrar com Google"
+        android:textAllCaps="false"
+        android:textColor="@color/orbi_dark_brown"
+        android:textSize="18sp"
+        app:cornerRadius="28dp"
+        app:icon="@drawable/ic_google"
+        app:iconGravity="end"
+        app:iconTint="@null"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_login_desc" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
