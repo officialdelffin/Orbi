@@ -12,30 +12,16 @@
     android:padding="0dp">
 
 
-    <!-- Logo do aplicativo no topo : -->
-    <TextView
-        android:id="@+id/tv_app_logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="@string/app_name"
-        android:textColor="@color/orbi_dark_brown"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <!-- ViewPager2 para deslizamento de paginas : -->
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/vp_onboarding"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/btn_next"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_app_logo" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
 
     <!-- Botao Voltar : -->
@@ -43,7 +29,7 @@
         android:id="@+id/btn_back"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="wrap_content"
-        android:layout_height="60dp"
+        android:layout_height="62dp"
         android:layout_marginStart="30dp"
         android:layout_marginBottom="30dp"
         android:text="@string/btn_back"
@@ -54,6 +40,8 @@
         app:cornerRadius="28dp"
         app:icon="@drawable/ic_arrow_back"
         app:iconGravity="textStart"
+        android:paddingStart="25dp"
+        android:paddingEnd="25dp"
         app:iconTint="@color/orbi_dark_brown"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -64,14 +52,14 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_next"
         android:layout_width="0dp"
-        android:layout_height="60dp"
+        android:layout_height="62dp"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="30dp"
         android:backgroundTint="@color/orbi_olive"
         android:gravity="start|center_vertical"
-        android:paddingStart="30dp"
-        android:paddingEnd="30dp"
+        android:paddingStart="25dp"
+        android:paddingEnd="25dp"
         android:text="@string/btn_next"
         android:textAllCaps="false"
         android:textColor="@color/orbi_white"
