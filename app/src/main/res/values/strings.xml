@@ -21,9 +21,15 @@
 
 
     <!-- Textos dos Botões do Onboarding: -->
-    <string name="btn_next">Próximo</string>
-    <string name="btn_back">Voltar</string>
-    <string name="btn_start">Começar</string>
+    <string name="onboarding_btn_next">Próximo</string>
+    <string name="onboarding_btn_back">Voltar</string>
+    <string name="onboarding_btn_start">Começar</string>
+
+
+    <!-- Textos dos Botões do login: -->
+    <string name="login_title">Acesse sua conta</string>
+    <string name="login_description">Entre para gerenciar seus ciclos de foco, personalizar suas pausas diárias e manter a sua produtividade em harmonia, com uma experiência totalmente sincronizada e adaptada ao seu ritmo.</string>
+    <string name="login_btn_login">Entrar com google</string>
 
 
 </resources>

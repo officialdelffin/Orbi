@@ -14,7 +14,6 @@ import android.transition.TransitionManager
 import com.example.orbi.R
 import android.transition.AutoTransition
 import com.example.orbi.databinding.ActivityOnboardingBinding
-import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import android.content.Intent
@@ -112,13 +111,13 @@ class OnboardingActivity : AppCompatActivity() {
                     binding.btnNext.text = if (isLastPage) {
 
 
-                        getString(R.string.btn_start)
+                        getString(R.string.onboarding_btn_start)
 
 
                     } else {
 
 
-                        getString(R.string.btn_next)
+                        getString(R.string.onboarding_btn_next)
 
 
                     }
