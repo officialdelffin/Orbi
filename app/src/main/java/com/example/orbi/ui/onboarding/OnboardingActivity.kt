@@ -10,7 +10,9 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.viewpager2.widget.ViewPager2
+import android.transition.TransitionManager
 import com.example.orbi.R
+import android.transition.AutoTransition
 import com.example.orbi.databinding.ActivityOnboardingBinding
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
@@ -96,6 +98,21 @@ class OnboardingActivity : AppCompatActivity() {
 
 
                 viewModel.currentPage.collect { position ->
+
+
+                    // Criando uma transição restrita apenas aos botões para não congelar o ViewPager2 :
+                    val transition = AutoTransition().apply {
+
+
+                        addTarget(binding.btnNext)
+                        addTarget(binding.btnBack)
+
+
+                    }
+
+
+                    // Aplicando a animação apenas nos alvos definidos :
+                    TransitionManager.beginDelayedTransition(binding.root, transition)
 
 
                     // Controlando a visibilidade do botao voltar :
