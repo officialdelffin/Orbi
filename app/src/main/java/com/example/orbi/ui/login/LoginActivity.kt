@@ -23,12 +23,12 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // 1. Pintando a barra de status (topo) e navegação (rodapé) com a cor oliva:
+        // Pintando a barra de status topo e navegação rodapé com a cor oliva:
         window.statusBarColor = ContextCompat.getColor(this, R.color.orbi_olive)
         window.navigationBarColor = ContextCompat.getColor(this, R.color.orbi_olive)
 
 
-        // 2. Avisando o sistema que o fundo agora é escuro, forçando os ícones a ficarem brancos:
+        // Avisando o sistema que o fundo agora é escuro, forçando os ícones a ficarem brancos:
         WindowInsetsControllerCompat(window, window.decorView).apply {
 
 
@@ -38,7 +38,7 @@ class LoginActivity : AppCompatActivity() {
 
         }
 
-        // Futuro: Aqui colocaremos o clique do binding.btnGoogleLogin
+        // Aqui colocaremos o clique do binding.btnGoogleLogin
 
 
     }
