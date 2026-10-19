@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,6 +9,7 @@
     android:layout_height="match_parent"
     android:background="@color/orbi_olive"
     android:padding="0dp">
+
 
     <!-- Título Principal -->
     <TextView
@@ -24,6 +27,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+
     <!-- Descrição -->
     <TextView
         android:id="@+id/tv_login_desc"
@@ -39,7 +43,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Botão Logar com Google -->
+
     <!-- Botão Logar com Google -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_google_login"
@@ -64,5 +68,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_login_desc" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
