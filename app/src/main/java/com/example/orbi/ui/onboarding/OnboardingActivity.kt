@@ -198,10 +198,6 @@ class OnboardingActivity : AppCompatActivity() {
         overridePendingTransition(R.anim.slide_in_down, R.anim.fade_out)
 
 
-        // Encerra o Onboarding para o usuário não voltar pra cá
-        finish()
-
-
     }
 
 
