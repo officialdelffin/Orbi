@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "781841526093",
+    "project_id": "orbi-5685c",
+    "storage_bucket": "orbi-5685c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:781841526093:android:c87edcac407530358b9b04",
+        "android_client_info": {
+          "package_name": "com.example.orbi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "781841526093-2oimvn7l4uq722dkc91qf8ng11u7gmdr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.orbi",
+            "certificate_hash": "26cc65f6232cf1532465a8291181c534a17ee697"
+          }
+        },
+        {
+          "client_id": "781841526093-0ltno6ere9dlghfs3thjgag59c35dbf9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCs0xl0G7_Fn-Q_eeL7WIpOMmKn-EzDe-s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "781841526093-0ltno6ere9dlghfs3thjgag59c35dbf9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
