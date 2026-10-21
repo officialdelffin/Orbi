@@ -2,6 +2,7 @@ package com.example.orbi.ui.login
 
 
 // Importações :
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
@@ -11,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.lifecycle.lifecycleScope
+import com.example.orbi.MainActivity
 import com.example.orbi.R
 import com.example.orbi.databinding.ActivityLoginBinding
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -217,10 +219,17 @@ class LoginActivity : AppCompatActivity() {
                     is LoginState.Success -> {
 
 
-                        Toast.makeText(this@LoginActivity, "Login realizado com sucesso! UID: ${state.userUid}", Toast.LENGTH_LONG).show()
+                        // Mensagem amigável de boas-vindas :
+                        Toast.makeText(this@LoginActivity, "Bem-vindo ao Orbi!", Toast.LENGTH_SHORT).show()
 
 
-                        // Futuro : Redirecionar para a MainActivity / Home do Orbi
+                        // Cria a rota de navegação para a tela principal :
+                        val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                        startActivity(intent)
+
+
+                        // Destrói a tela de login atual da memória RAM :
+                        finish()
 
 
                     }
