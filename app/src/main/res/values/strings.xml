@@ -4,6 +4,10 @@
     <string name="app_name">Orbi</string>
 
 
+    <!-- Chave de Autenticação do Google -->
+    <string name="default_web_client_id">781841526093-0ltno6ere9dlghfs3thjgag59c35dbf9.apps.googleusercontent.com</string>
+
+
     <!-- Textos da Tela de Onboarding Um : -->
     <string name="onboarding_title_one">Tempo que se adapta a você</string>
     <string name="onboarding_desc_one">Gerencie rotinas e construa ciclos de produtividade fluidos, sem a rigidez dos cronômetros tradicionais.</string>
