@@ -6,22 +6,21 @@
     android:background="@drawable/bg_rounded_dialog"
     android:gravity="center"
     android:orientation="vertical"
-    android:padding="24dp">
+    android:padding="30dp">
 
 
     <ImageView
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:src="@drawable/ic_sad_cloud_cream_color"
-        android:contentDescription="Nuvem triste sem conexão" />
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/ic_sad_cloud_cream_color" />
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Você está offline"
+        android:text="@string/no_connection_title"
         android:textColor="@color/orbi_cream"
-        android:textSize="20sp"
+        android:textSize="30sp"
         android:textStyle="bold" />
 
 
@@ -30,17 +29,18 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:gravity="center"
-        android:text="Conecte-se à internet para entrar no Orbi e sincronizar seu progresso."
+        android:text="@string/no_connection_description"
         android:textColor="@color/orbi_cream"
-        android:textSize="14sp" />
+        android:textSize="20sp" />
 
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_retry_connection"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="62dp"
         android:layout_marginTop="24dp"
-        android:text="Tentar Novamente"
+        android:text="@string/no_connection_btn"
+        android:textAllCaps="false"
         android:textColor="@color/orbi_cream"
         app:backgroundTint="@color/orbi_olive"
         app:cornerRadius="30dp" />

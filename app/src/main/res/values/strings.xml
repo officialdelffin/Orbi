@@ -8,6 +8,8 @@
     <string name="default_web_client_id">781841526093-0ltno6ere9dlghfs3thjgag59c35dbf9.apps.googleusercontent.com</string>
 
 
+    <!-- Obboarding -->
+
     <!-- Textos da Tela de Onboarding Um : -->
     <string name="onboarding_title_one">Tempo que se adapta a você</string>
     <string name="onboarding_desc_one">Gerencie rotinas e construa ciclos de produtividade fluidos, sem a rigidez dos cronômetros tradicionais.</string>
@@ -29,10 +31,18 @@
     <string name="onboarding_btn_start">Começar</string>
 
 
+    <!-- Login -->
+
     <!-- Textos dos Botões do login: -->
     <string name="login_title">Acesse sua conta</string>
     <string name="login_description">Entre para gerenciar seus ciclos de foco, personalizar suas pausas diárias e manter a sua produtividade em harmonia, com uma experiência totalmente sincronizada e adaptada ao seu ritmo.</string>
     <string name="login_btn_login">Entrar com google</string>
+
+
+    <!-- Dialog no connection -->
+    <string name="no_connection_title">Você está offline</string>
+    <string name="no_connection_description">Conecte-se à internet para entrar no Orbi e sincronizar seu progresso.</string>
+    <string name="no_connection_btn">Tentar Novamente</string>
 
 
 </resources>
