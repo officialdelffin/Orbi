@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_rounded_dialog"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/ic_sad_cloud_cream_color"
+        android:contentDescription="Nuvem triste sem conexão" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Você está offline"
+        android:textColor="@color/orbi_cream"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="Conecte-se à internet para entrar no Orbi e sincronizar seu progresso."
+        android:textColor="@color/orbi_cream"
+        android:textSize="14sp" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_retry_connection"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginTop="24dp"
+        android:text="Tentar Novamente"
+        android:textColor="@color/orbi_cream"
+        app:backgroundTint="@color/orbi_olive"
+        app:cornerRadius="30dp" />
+
+
+</LinearLayout>
