@@ -159,8 +159,23 @@ class LoginActivity : AppCompatActivity() {
         binding.btnGoogleLogin.setOnClickListener {
 
 
-            val signInIntent = googleSignInClient.signInIntent
-            googleSignInLauncher.launch(signInIntent)
+            // Valida a conexão antes de abrir a gaveta de e-mails ou enviar dados :
+            if (com.example.orbi.util.NetworkUtils.isInternetAvailable(this)) {
+
+
+                val signInIntent = googleSignInClient.signInIntent
+                googleSignInLauncher.launch(signInIntent)
+
+
+            } else {
+
+
+                // Interrompe o fluxo e exibe a nuvem de aviso :
+                val dialog = NoConnectionDialog()
+                dialog.show(supportFragmentManager, "NoConnectionDialog")
+
+
+            }
 
 
         }
