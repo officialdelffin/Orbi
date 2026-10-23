@@ -45,4 +45,15 @@
     <string name="no_connection_btn">Tentar Novamente</string>
 
 
+    <!--  Main -->
+
+    <string name="main_title">Olá, seja bem-vindo ao Orbi!</string>
+    <string name="main_description">Grandes conquistas exigem ritmo e clareza. Defina os seus blocos de foco para o dia de hoje, acompanhe a sua evolução em tempo real e execute seus projetos sem sobrecarregar a sua mente.</string>
+    <string name="main_cycles_daily">Nenhum ciclo disponivel para hoje.</string>
+    <string name="main_cycles_saved_title">Ciclos salvos</string>
+    <string name="main_cycles_available">0 disponível</string>
+    <string name="main_without_cycles">Você ainda não tem nenhum ciclo criado.\nClique no botão de adicionar um novo ciclo para criar</string>
+    <string name="main_bnt_add_cycles">Adicionar um novo ciclo</string>
+
+
 </resources>
