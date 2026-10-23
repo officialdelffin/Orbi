@@ -1,13 +1,210 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/orbi_cream"
     tools:context=".ui.main.MainActivity">
+
+
+    <!-- Título de Boas-vindas : -->
+    <TextView
+        android:id="@+id/tv_welcome_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:text="Seja bem-vindo!"
+        android:textColor="@color/orbi_dark_brown"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <!-- Botão de opções (Três pontos) : -->
+    <ImageButton
+        android:id="@+id/btn_more_options"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="30dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_more_vert"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_welcome_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_welcome_title"
+        app:tint="@color/orbi_dark_brown" />
+
+
+    <!-- Descrição de introdução : -->
+    <TextView
+        android:id="@+id/tv_welcome_desc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="30dp"
+        android:text="O que vamos focar e desenvolver hoje?"
+        android:textColor="@color/orbi_dark_brown"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tv_welcome_title"
+        app:layout_constraintTop_toBottomOf="@+id/tv_welcome_title" />
+
+
+    <!-- Cartão de status diário (Aviso de ciclos de hoje) : -->
+    <LinearLayout
+        android:id="@+id/card_today_status"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/bg_rounded_status"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_welcome_desc">
+
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_status_indicator"/>
+
+
+        <TextView
+            android:id="@+id/tv_today_status_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:text="Nenhum ciclo ainda definido para hoje"
+            android:textColor="@color/orbi_dark_brown"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+
+
+    <!-- Título da seção de Ciclos Salvos : -->
+    <TextView
+        android:id="@+id/tv_saved_cycles_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Ciclos salvos"
+        android:textColor="@color/orbi_dark_brown"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/tv_welcome_title"
+        app:layout_constraintTop_toBottomOf="@+id/card_today_status" />
+
+
+    <!-- Contador de ciclos disponíveis : -->
+    <TextView
+        android:id="@+id/tv_saved_cycles_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:text="0 disponíveis"
+        android:textColor="@color/orbi_dark_brown"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_saved_cycles_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_saved_cycles_title" />
+
+
+    <!-- Área rolável que abriga o estado vazio (e futuramente a lista) : -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@+id/btn_add_cycle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_saved_cycles_title">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <!-- Ilustração de estado vazio (Nenhum ciclo criado) : -->
+            <ImageView
+                android:id="@+id/iv_empty_state"
+                android:layout_width="0dp"
+                android:layout_height="250dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="64dp"
+                android:layout_marginEnd="30dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/img_empty_sleeping"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <!-- Mensagem de estado vazio : -->
+            <TextView
+                android:id="@+id/tv_empty_state_msg"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="32dp"
+                android:layout_marginBottom="20dp"
+                android:gravity="center"
+                android:text="Você ainda não tem nenhum ciclo criado.\nClique no botão de adicionar um novo ciclo para criar"
+                android:textColor="@color/orbi_dark_brown"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_empty_state"
+                app:layout_constraintEnd_toEndOf="@+id/iv_empty_state"
+                app:layout_constraintStart_toStartOf="@+id/iv_empty_state" />
+
+
+            <!-- O RecyclerView dos cartões entrará aqui futuramente, oculto por enquanto -->
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+    <!-- Botão inferior fixo para adicionar novo ciclo : -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_add_cycle"
+        android:layout_width="0dp"
+        android:layout_height="62dp"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        android:paddingEnd="25dp"
+        android:paddingStart="25dp"
+        android:text="Adicione um novo ciclo"
+        android:gravity="start|center_vertical"
+        android:textAllCaps="false"
+        android:textColor="@color/orbi_cream"
+        android:textSize="18sp"
+        app:backgroundTint="@color/orbi_olive"
+        app:cornerRadius="30dp"
+        app:icon="@drawable/ic_add_square"
+        app:iconGravity="end"
+        app:iconSize="24dp"
+        app:iconTint="@color/orbi_cream"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

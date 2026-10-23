@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <solid android:color="@color/orbi_sand" /> <!-- Ajuste para a cor exata do seu card de status -->
+    <corners android:radius="30dp" />
+    <stroke
+        android:width="0.8dp"
+        android:color="@color/orbi_dark_sand" />
+
+
+</shape>
