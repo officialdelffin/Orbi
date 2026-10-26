@@ -197,11 +197,8 @@ class CreateCycleActivity : AppCompatActivity() {
         binding.btnNext.isEnabled = when (position) {
 
 
-            // Passo 1: O botão só liga se o título tiver pelo menos 3 caracteres :
             0 -> state.title.trim().length >= 3
-
-
-            // Libera os próximos passos temporariamente enquanto não os construímos :
+            1 -> state.selectedDays.isNotEmpty() // Regra de segurança do Passo 2
             else -> true
 
 

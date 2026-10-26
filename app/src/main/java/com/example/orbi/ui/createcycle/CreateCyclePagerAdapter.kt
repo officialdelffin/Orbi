@@ -23,9 +23,7 @@ class CreateCyclePagerAdapter(activity: FragmentActivity) : FragmentStateAdapter
 
 
             0 -> StepOneFragment()
-
-
-            // Placeholders: Retorna um fragmento vazio para os passos que ainda vamos construir :
+            1 -> StepTwoFragment()
             else -> Fragment()
 
 
