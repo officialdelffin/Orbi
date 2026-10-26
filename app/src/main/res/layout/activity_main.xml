@@ -189,11 +189,11 @@
         android:layout_marginHorizontal="24dp"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginBottom="30dp"
-        android:paddingEnd="25dp"
-        android:paddingStart="25dp"
-        android:text="@string/main_bnt_add_cycles"
+        android:layout_marginBottom="32dp"
         android:gravity="start|center_vertical"
+        android:paddingStart="35dp"
+        android:paddingEnd="35dp"
+        android:text="@string/main_bnt_add_cycles"
         android:textAllCaps="false"
         android:textColor="@color/orbi_cream"
         android:textSize="18sp"
@@ -205,6 +205,7 @@
         app:iconTint="@color/orbi_cream"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
 
