@@ -71,7 +71,20 @@ class CreateCycleActivity : AppCompatActivity() {
         binding.viewPager.isUserInputEnabled = false
 
 
-        // Nota : O Adapter com os 5 Fragmentos será injetado aqui na próxima fase!
+        // Configura o paginador central :
+        private fun setupViewPager() {
+
+
+            // Bloqueia o gesto de deslizar (swipe) para obrigar o usuário a usar os botões validados :
+            binding.viewPager.isUserInputEnabled = false
+
+
+            // Injeta o adaptador recém-criado :
+            val pagerAdapter = CreateCyclePagerAdapter(this)
+            binding.viewPager.adapter = pagerAdapter
+
+
+        }
 
 
     }
