@@ -181,6 +181,16 @@ class CreateCycleActivity : AppCompatActivity() {
                 validateStep(binding.viewPager.currentItem, state)
 
 
+                // Encerra a tela e volta para a MainActivity se o NoSQL salvar com sucesso :
+                if (state.isSuccess) {
+
+
+                    finish()
+
+
+                }
+
+
             }
 
 
@@ -200,6 +210,7 @@ class CreateCycleActivity : AppCompatActivity() {
             0 -> state.title.trim().length >= 3
             1 -> state.selectedDays.isNotEmpty()
             2 -> state.focusMinutes > 0
+            3 -> state.repetitions > 0
             else -> true
 
 

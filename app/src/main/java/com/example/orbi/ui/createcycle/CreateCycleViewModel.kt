@@ -113,11 +113,21 @@ class CreateCycleViewModel @Inject constructor(
     }
 
 
-    // Atualiza o tempo de pausa e as repetições no Passo 4 :
-    fun updateBreakAndRepetitions(breakMin: Int, reps: Int) {
+    // Atualiza apenas as repetições no Passo 4 :
+    fun updateRepetitions(reps: Int) {
 
 
-        _formState.update { it.copy(breakMinutes = breakMin, repetitions = reps) }
+        _formState.update { it.copy(repetitions = reps) }
+
+
+    }
+
+
+    // Atualiza apenas o tempo de pausa no Passo 5 :
+    fun updateBreakMinutes(minutes: Int) {
+
+
+        _formState.update { it.copy(breakMinutes = minutes) }
 
 
     }
