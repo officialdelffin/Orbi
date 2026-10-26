@@ -7,9 +7,11 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.WindowInsetsControllerCompat
+import androidx.lifecycle.lifecycleScope
 import com.example.orbi.R
 import com.example.orbi.databinding.ActivityCreateCycleBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 
 // Moldura principal que gerencia o assistente de criação passo a passo :
@@ -18,8 +20,6 @@ class CreateCycleActivity : AppCompatActivity() {
 
 
     private lateinit var binding: ActivityCreateCycleBinding
-
-
     private val viewModel: CreateCycleViewModel by viewModels()
 
 
@@ -37,6 +37,7 @@ class CreateCycleActivity : AppCompatActivity() {
         setupSystemBars()
         setupViewPager()
         setupButtons()
+        observeViewModel()
 
 
     }
@@ -71,20 +72,9 @@ class CreateCycleActivity : AppCompatActivity() {
         binding.viewPager.isUserInputEnabled = false
 
 
-        // Configura o paginador central :
-        private fun setupViewPager() {
-
-
-            // Bloqueia o gesto de deslizar (swipe) para obrigar o usuário a usar os botões validados :
-            binding.viewPager.isUserInputEnabled = false
-
-
-            // Injeta o adaptador recém-criado :
-            val pagerAdapter = CreateCyclePagerAdapter(this)
-            binding.viewPager.adapter = pagerAdapter
-
-
-        }
+        // Injeta o adaptador recém-criado :
+        val pagerAdapter = CreateCyclePagerAdapter(this)
+        binding.viewPager.adapter = pagerAdapter
 
 
     }
@@ -167,6 +157,52 @@ class CreateCycleActivity : AppCompatActivity() {
 
 
             binding.btnNext.text = "Próximo"
+
+
+        }
+
+
+        validateStep(binding.viewPager.currentItem, viewModel.formState.value)
+
+
+    }
+
+
+    // Observa as mudanças no formulário em tempo real :
+    private fun observeViewModel() {
+
+
+        lifecycleScope.launch {
+
+
+            viewModel.formState.collect { state ->
+
+
+                validateStep(binding.viewPager.currentItem, state)
+
+
+            }
+
+
+        }
+
+
+    }
+
+
+    // Gerencia as regras de bloqueio do botão "Próximo" para cada etapa :
+    private fun validateStep(position: Int, state: CycleFormState) {
+
+
+        binding.btnNext.isEnabled = when (position) {
+
+
+            // Passo 1: O botão só liga se o título tiver pelo menos 3 caracteres :
+            0 -> state.title.trim().length >= 3
+
+
+            // Libera os próximos passos temporariamente enquanto não os construímos :
+            else -> true
 
 
         }
