@@ -24,6 +24,7 @@ class CreateCyclePagerAdapter(activity: FragmentActivity) : FragmentStateAdapter
 
             0 -> StepOneFragment()
             1 -> StepTwoFragment()
+            2 -> StepThreeFragment()
             else -> Fragment()
 
 

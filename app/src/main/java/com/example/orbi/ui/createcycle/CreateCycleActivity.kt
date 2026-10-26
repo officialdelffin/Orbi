@@ -198,7 +198,8 @@ class CreateCycleActivity : AppCompatActivity() {
 
 
             0 -> state.title.trim().length >= 3
-            1 -> state.selectedDays.isNotEmpty() // Regra de segurança do Passo 2
+            1 -> state.selectedDays.isNotEmpty()
+            2 -> state.focusMinutes > 0
             else -> true
 
 
