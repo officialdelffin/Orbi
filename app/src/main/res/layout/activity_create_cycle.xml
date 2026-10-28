@@ -10,19 +10,6 @@
 
 
     <!-- Botão de fechar (Cancelar criação) : -->
-    <ImageButton
-        android:id="@+id/btn_close"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:contentDescription="Fechar assistente"
-        android:scaleType="centerInside"
-        android:src="@drawable/ic_cancel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/orbi_dark_brown" />
 
 
     <!-- Barra de progresso superior indicando a etapa atual (1 a 5) : -->
@@ -30,20 +17,35 @@
 
     <!-- Área central que hospedará os passos (Deslize desativado via código) : -->
 
+    <ImageButton
+        android:id="@+id/btn_close"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="30dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Fechar assistente"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_cancel"
+        app:layout_constraintBottom_toBottomOf="@+id/progress_bar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/progress_bar"
+        app:tint="@color/orbi_dark_brown" />
+
     <com.google.android.material.progressindicator.LinearProgressIndicator
         android:id="@+id/progress_bar"
         android:layout_width="0dp"
         android:layout_height="4dp"
         android:layout_marginHorizontal="20dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="30dp"
         android:max="5"
         android:progress="1"
         app:indicatorColor="@color/orbi_olive"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_close"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/btn_close"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
         app:trackColor="#E8E2D6"
         app:trackCornerRadius="5dp" />
 
@@ -52,7 +54,6 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="30dp"
-        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation_bar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -109,6 +110,20 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:text="Transforme o seu planejamento em execução prática. Defina como e quando você vai focar no desenvolvimento dos seus estudos e projetos."
+        android:textColor="@color/orbi_dark_brown"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

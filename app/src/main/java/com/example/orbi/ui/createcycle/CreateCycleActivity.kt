@@ -178,10 +178,42 @@ class CreateCycleActivity : AppCompatActivity() {
             viewModel.formState.collect { state ->
 
 
+                // 1. Valida as regras de negócio de cada tela :
                 validateStep(binding.viewPager.currentItem, state)
 
 
-                // Encerra a tela e volta para a MainActivity se o NoSQL salvar com sucesso :
+                // 2. Proteção de UI durante a operação assíncrona (Salvando no NoSQL) :
+                if (state.isSaving) {
+
+
+                    binding.btnNext.isEnabled = false
+                    binding.btnNext.text = "Salvando..."
+                    binding.btnBack.isEnabled = false
+                    binding.btnClose.isEnabled = false
+
+
+                } else if (binding.viewPager.currentItem == 4) {
+
+
+                    // Restaura o botão caso a tela ainda esteja no último passo e não esteja salvando :
+                    binding.btnNext.text = "Salvar Ciclo"
+                    binding.btnClose.isEnabled = true
+
+
+                }
+
+
+                // 3. Exibe um alerta visual se o banco de dados NoSQL retornar alguma falha :
+                state.errorMessage?.let { erro ->
+
+
+                    android.widget.Toast.makeText(this@CreateCycleActivity, erro, android.widget.Toast.LENGTH_LONG).show()
+
+
+                }
+
+
+                // 4. Encerra o assistente e retorna para a tela inicial assim que o sucesso for confirmado na nuvem :
                 if (state.isSuccess) {
 
 
