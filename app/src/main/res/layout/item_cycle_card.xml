@@ -1,6 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="30dp"
+    android:layout_marginBottom="30dp"
+    app:cardBackgroundColor="@android:color/white"
+    app:cardCornerRadius="30dp"
+    app:cardElevation="0dp"
+    app:strokeColor="#E8E2D6"
+    app:strokeWidth="1dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp">
+
+        <!-- Título do Ciclo : -->
+        <TextView
+            android:id="@+id/tv_cycle_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:textColor="@color/orbi_dark_brown"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/btn_menu_cycle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Estudos com Unity" />
+
+        <!-- Botão de Opções (Três pontinhos) : -->
+        <ImageButton
+            android:id="@+id/btn_menu_cycle"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_more_vert"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/orbi_dark_brown" />
+
+        <!-- Descrição : -->
+        <TextView
+            android:id="@+id/tv_cycle_desc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/orbi_dark_brown"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_cycle_title"
+            tools:text="Pomodoro para ajudar a estudar e desenvolver os meus estudos em desenvolvimento de jogos" />
+
+        <!-- Caixa de Resumo das Variáveis : -->
+        <LinearLayout
+            android:id="@+id/box_cycle_summary"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_rounded_status"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_cycle_desc">
+
+            <TextView
+                android:id="@+id/tv_cycle_summary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/orbi_dark_brown"
+                android:textSize="14sp"
+                tools:text="Ciclo de 5 repetições de 30 minutos com 10 minutos de pausa entre eles" />
+
+        </LinearLayout>
+
+        <!-- Container Inferior (Dias da Semana e Botão Iniciar) : -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/box_cycle_summary">
+
+            <!-- Container dos dias da semana (Serão populados via código para garantir flexibilidade) : -->
+            <LinearLayout
+                android:id="@+id/layout_days_container"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:layout_marginEnd="12dp"/>
+
+            <!-- Botão Iniciar : -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_start_cycle"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:text="Iniciar"
+                android:textAllCaps="false"
+                android:textColor="@color/orbi_cream"
+                android:textSize="14sp"
+                app:backgroundTint="@color/orbi_olive"
+                app:cornerRadius="24dp" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
