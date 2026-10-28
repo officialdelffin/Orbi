@@ -99,29 +99,27 @@ class CycleAdapter : RecyclerView.Adapter<CycleAdapter.CycleViewHolder>() {
                 val isActive = cycle.activeDays.contains(i)
 
 
-                // Criação da bolinha (TextView) via código para garantir flexibilidade :
                 val dayTextView = TextView(context).apply {
 
 
                     text = daysInitials[i - 1]
-                    textSize = 12f
+                    textSize = 11f // Fonte ajustada de 12f para 11f
                     gravity = android.view.Gravity.CENTER
 
 
-                    // Definindo um tamanho fixo de 28dp x 28dp para as bolinhas :
-                    val size = (28 * context.resources.displayMetrics.density).toInt()
+                    // Tamanho reduzido de 28dp para 25dp para evitar Overflow :
+                    val size = (25 * context.resources.displayMetrics.density).toInt()
 
 
                     layoutParams = LinearLayout.LayoutParams(size, size).apply {
 
 
-                        marginEnd = (4 * context.resources.displayMetrics.density).toInt() // Margem de 4dp entre elas
+                        marginEnd = (4 * context.resources.displayMetrics.density).toInt()
 
 
                     }
 
 
-                    // Pinta de Olive se ativo, ou mantém o fundo creme vazado se inativo :
                     val bgDrawable = GradientDrawable().apply {
 
 
@@ -138,7 +136,7 @@ class CycleAdapter : RecyclerView.Adapter<CycleAdapter.CycleViewHolder>() {
 
 
                             setColor(Color.TRANSPARENT)
-                            setStroke(2, ContextCompat.getColor(context, R.color.orbi_olive)) // Borda para os não selecionados
+                            setStroke(2, ContextCompat.getColor(context, R.color.orbi_olive))
 
 
                         }
@@ -149,7 +147,7 @@ class CycleAdapter : RecyclerView.Adapter<CycleAdapter.CycleViewHolder>() {
 
                     background = bgDrawable
 
-                    // Cor do texto :
+
                     setTextColor(
 
 
@@ -164,6 +162,8 @@ class CycleAdapter : RecyclerView.Adapter<CycleAdapter.CycleViewHolder>() {
 
 
                 binding.layoutDaysContainer.addView(dayTextView)
+
+
             }
 
 
