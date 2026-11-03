@@ -32,6 +32,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="30dp"
+        android:justificationMode="inter_word"
         android:text="Deslize os seletores para definir a duração exata do seu ciclo de concentração."
         android:textColor="@color/orbi_dark_brown"
         android:textSize="16sp"

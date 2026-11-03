@@ -52,6 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="35dp"
         android:layout_marginEnd="35dp"
+        android:justificationMode="inter_word"
         android:text="@string/login_description"
         android:textColor="@color/orbi_cream"
         android:textSize="20sp"

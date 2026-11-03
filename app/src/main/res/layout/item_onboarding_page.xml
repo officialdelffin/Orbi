@@ -71,6 +71,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:justificationMode="inter_word"
         tools:text="Gerencie rotinas e construa ciclos de produtividade fluidos, sem a rigidez dos cronômetros tradicionais." />
 
 

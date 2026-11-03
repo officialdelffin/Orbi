@@ -28,6 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="30dp"
+        android:justificationMode="inter_word"
         android:text="Dê um nome para identificar o seu objetivo e, se quiser, adicione uma descrição."
         android:textColor="@color/orbi_dark_brown"
         android:textSize="16sp"

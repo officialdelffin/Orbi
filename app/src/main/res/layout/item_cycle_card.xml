@@ -57,6 +57,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_cycle_title"
+            android:justificationMode="inter_word"
             tools:text="Pomodoro para ajudar a estudar e desenvolver os meus estudos em desenvolvimento de jogos" />
 
         <!-- Caixa de Resumo das Variáveis : -->
@@ -78,6 +79,9 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/orbi_dark_brown"
                 android:textSize="14sp"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                android:justificationMode="inter_word"
                 tools:text="Ciclo de 5 repetições de 30 minutos com 10 minutos de pausa entre eles" />
 
         </LinearLayout>

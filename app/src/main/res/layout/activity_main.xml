@@ -49,6 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="30dp"
+        android:justificationMode="inter_word"
         android:text="@string/main_description"
         android:textColor="@color/orbi_dark_brown"
         android:textSize="16sp"
@@ -86,7 +87,8 @@
             android:id="@+id/tv_today_status_msg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
+            android:layout_marginStart="10dp"
+            android:paddingEnd="10dp"
             android:text="@string/main_cycles_daily"
             android:textColor="@color/orbi_dark_brown"
             android:textSize="16sp" />

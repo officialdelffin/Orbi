@@ -21,14 +21,14 @@
         android:id="@+id/btn_close"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:contentDescription="Fechar assistente"
         android:scaleType="centerInside"
         android:src="@drawable/ic_cancel"
-        app:layout_constraintBottom_toBottomOf="@+id/progress_bar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/progress_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:tint="@color/orbi_dark_brown" />
 
     <com.google.android.material.progressindicator.LinearProgressIndicator
@@ -37,18 +37,19 @@
         android:layout_height="4dp"
         android:layout_marginHorizontal="20dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="30dp"
         android:max="5"
         android:progress="1"
         app:indicatorColor="@color/orbi_olive"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/btn_close"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
         app:trackColor="#E8E2D6"
         app:trackCornerRadius="5dp" />
 
+
+    <!-- Barra de navegação inferior : -->
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/view_pager"
         android:layout_width="0dp"
@@ -56,11 +57,10 @@
         android:layout_marginTop="30dp"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation_bar"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/progress_bar" />
 
-
-    <!-- Barra de navegação inferior : -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/bottom_navigation_bar"
         android:layout_width="0dp"
@@ -73,20 +73,23 @@
         app:layout_constraintStart_toStartOf="parent">
 
 
-        <!-- Botão Voltar : -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_back"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="62dp"
             android:enabled="false"
             android:text="Voltar"
-            android:textSize="18sp"
             android:textAllCaps="false"
             android:textColor="@color/orbi_dark_brown"
+            android:textSize="18sp"
+            app:backgroundTint="@color/orbi_sand"
+            app:cornerRadius="30dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:strokeColor="@color/orbi_dark_brown"
+            app:strokeWidth="0.1dp" />
 
 
         <!-- Botão Próximo / Salvar : -->
@@ -118,10 +121,12 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="30dp"
+        android:justificationMode="inter_word"
         android:text="Transforme o seu planejamento em execução prática. Defina como e quando você vai focar no desenvolvimento dos seus estudos e projetos."
         android:textColor="@color/orbi_dark_brown"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_close"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
