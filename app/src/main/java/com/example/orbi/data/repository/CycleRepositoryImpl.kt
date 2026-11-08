@@ -142,4 +142,27 @@ class CycleRepositoryImpl @Inject constructor(
     }
 
 
+    override suspend fun getCycleById(cycleId: String): Cycle? {
+
+
+        return try {
+
+
+            // Vai até o Firestore, acha o documento pelo ID e converte de volta para a classe Cycle :
+            val snapshot = firestore.collection("cycles").document(cycleId).get().await()
+            snapshot.toObject(Cycle::class.java)
+
+
+        } catch (e: Exception) {
+
+
+            null
+
+
+        }
+
+
+    }
+
+
 }
