@@ -72,7 +72,8 @@
 
 
             android:name=".ui.createcycle.CreateCycleActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
 
 
         <activity
