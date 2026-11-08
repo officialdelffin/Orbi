@@ -75,6 +75,13 @@
             android:exported="false" />
 
 
+        <activity
+
+
+            android:name=".ui.timer.TimerActivity"
+            android:exported="false" />
+
+
     </application>
 
 

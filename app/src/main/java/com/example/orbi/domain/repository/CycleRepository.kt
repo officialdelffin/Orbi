@@ -18,4 +18,8 @@ interface CycleRepository {
     fun getUserCycles(): Flow<List<Cycle>>
 
 
+    // Busca um ciclo específico pelo seu ID :
+    suspend fun getCycleById(cycleId: String): Cycle?
+
+
 }
