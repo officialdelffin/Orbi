@@ -103,19 +103,17 @@ class TimerActivity : AppCompatActivity() {
                     }
 
 
-                    // 3. Atualiza o botão de Play/Pause :
+                    // 3. Atualiza o único botão central alternando a imagem entre Play e Pause :
                     if (state.isPlaying) {
 
 
-                        binding.btnPlay.visibility = View.GONE
-                        binding.btnPause.visibility = View.VISIBLE
+                        binding.btnPause.setBackgroundResource(R.drawable.ic_pause)
 
 
                     } else {
 
 
-                        binding.btnPlay.visibility = View.VISIBLE
-                        binding.btnPause.visibility = View.GONE
+                        binding.btnPause.setBackgroundResource(R.drawable.ic_play)
 
 
                     }
@@ -228,7 +226,7 @@ class TimerActivity : AppCompatActivity() {
 
         binding.btnBack.setOnClickListener { finish() }
 
-        binding.btnPlay.setOnClickListener { viewModel.toggleTimer() }
+        // Como agora só existe um botão, conectamos ele à função toggleTimer :
         binding.btnPause.setOnClickListener { viewModel.toggleTimer() }
         binding.btnSkip.setOnClickListener { viewModel.skipToNextPhase() }
         binding.btnRestartCycle.setOnClickListener { viewModel.restartCycle() }
