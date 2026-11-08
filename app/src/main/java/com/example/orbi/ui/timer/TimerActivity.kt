@@ -2,7 +2,11 @@ package com.example.orbi.ui.timer
 
 
 // Importações :
+import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
+import android.view.View
+import android.widget.LinearLayout
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -14,6 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 
+// Tela responsável por rodar o cronômetro do Pomodoro :
 @AndroidEntryPoint
 class TimerActivity : AppCompatActivity() {
 
@@ -26,8 +31,13 @@ class TimerActivity : AppCompatActivity() {
 
 
         super.onCreate(savedInstanceState)
+
+
+        // Inflando o layout XML e conectando os elementos visuais :
         binding = ActivityTimerBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
         setupSystemBars()
         setupListeners()
 
@@ -35,12 +45,15 @@ class TimerActivity : AppCompatActivity() {
         // Recebe o ID do ciclo clicado e manda a ViewModel buscar no banco :
         val cycleId = intent.getStringExtra("CYCLE_ID")
         cycleId?.let { viewModel.loadCycle(it) }
+
+
         observeViewModel()
 
 
     }
 
 
+    // Observa o estado da ViewModel em tempo real :
     private fun observeViewModel() {
 
 
@@ -53,11 +66,22 @@ class TimerActivity : AppCompatActivity() {
                 state.cycle?.let { cycle ->
 
 
-                    // 1. Atualiza o relógio (ex: 25:00) :
+                    // 1. Atualiza o relógio e a Barra de Progresso :
                     binding.tvTimeLeft.text = viewModel.getFormattedTime()
 
 
-                    // 2. Define os textos baseados no estado (Foco ou Pausa) :
+                    // Calcula a porcentagem para preencher o anel (CircularProgressIndicator) :
+                    if (state.totalTimeInMillis > 0) {
+
+
+                        val progress = ((state.timeLeftInMillis.toFloat() / state.totalTimeInMillis.toFloat()) * 100).toInt()
+                        binding.progressTimer.progress = progress
+
+
+                    }
+
+
+                    // 2. Define o visual baseado no estado (Foco ou Pausa) :
                     if (state.isFocusMode) {
 
 
@@ -79,7 +103,26 @@ class TimerActivity : AppCompatActivity() {
                     }
 
 
-                    // O próximo passo será renderizar as bolinhas e fazer o relógio rodar!
+                    // 3. Atualiza o botão de Play/Pause :
+                    if (state.isPlaying) {
+
+
+                        binding.btnPlay.visibility = View.GONE
+                        binding.btnPause.visibility = View.VISIBLE
+
+
+                    } else {
+
+
+                        binding.btnPlay.visibility = View.VISIBLE
+                        binding.btnPause.visibility = View.GONE
+
+
+                    }
+
+
+                    // 4. Renderiza as bolinhas dinâmicas :
+                    renderDots(cycle.repetitions, state.currentSession, state.isFocusMode)
 
 
                 }
@@ -94,6 +137,107 @@ class TimerActivity : AppCompatActivity() {
     }
 
 
+    // Desenha as bolinhas de progresso conforme a legenda do aplicativo :
+    private fun renderDots(totalSessions: Int, currentSession: Int, isFocusMode: Boolean) {
+
+
+        binding.layoutDotsContainer.removeAllViews()
+
+
+        for (i in 1..totalSessions) {
+
+
+            val dot = View(this).apply {
+
+
+                // Tamanho da bolinha :
+                val size = (12 * resources.displayMetrics.density).toInt()
+
+
+                layoutParams = LinearLayout.LayoutParams(size, size).apply {
+
+
+                    marginEnd = (6 * resources.displayMetrics.density).toInt()
+
+
+                }
+
+
+                // Definindo as cores com base no estado :
+                val bgDrawable = GradientDrawable().apply {
+
+
+                    shape = GradientDrawable.OVAL
+
+
+                    when {
+
+
+                        // Bolinhas passadas ficam sólidas :
+                        i < currentSession -> setColor(ContextCompat.getColor(this@TimerActivity, R.color.orbi_dark_brown))
+
+                        // Bolinha atual muda de cor dependendo se é foco (Marrom) ou intervalo (Verde) :
+                        i == currentSession -> {
+
+
+                            if (isFocusMode) {
+
+
+                                setColor(ContextCompat.getColor(this@TimerActivity, R.color.orbi_dark_brown))
+
+
+                            } else {
+
+
+                                setColor(ContextCompat.getColor(this@TimerActivity, R.color.orbi_olive))
+
+
+                            }
+
+
+                        }
+
+                        // Bolinhas futuras ficam brancas (pendentes) :
+                        else -> setColor(Color.WHITE)
+
+
+                    }
+
+
+                }
+
+
+                background = bgDrawable
+
+
+            }
+
+
+            binding.layoutDotsContainer.addView(dot)
+
+
+        }
+
+
+    }
+
+
+    // Configura os cliques :
+    private fun setupListeners() {
+
+
+        binding.btnBack.setOnClickListener { finish() }
+
+        binding.btnPlay.setOnClickListener { viewModel.toggleTimer() }
+        binding.btnPause.setOnClickListener { viewModel.toggleTimer() }
+        binding.btnSkip.setOnClickListener { viewModel.skipToNextPhase() }
+        binding.btnRestartCycle.setOnClickListener { viewModel.restartCycle() }
+
+
+    }
+
+
+    // Mantém a imersão visual da tela :
     private fun setupSystemBars() {
 
 
@@ -109,15 +253,6 @@ class TimerActivity : AppCompatActivity() {
 
 
         }
-
-
-    }
-
-
-    private fun setupListeners() {
-
-
-        binding.btnBack.setOnClickListener { finish() }
 
 
     }

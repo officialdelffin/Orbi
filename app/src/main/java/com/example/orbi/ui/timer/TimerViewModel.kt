@@ -7,6 +7,8 @@ import androidx.lifecycle.viewModelScope
 import com.example.orbi.domain.model.Cycle
 import com.example.orbi.domain.repository.CycleRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -15,20 +17,22 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
-// Classe que guarda o estado exato da tela do cronômetro :
+// Adicionamos a variável totalTimeInMillis para a barra de progresso saber o limite :
 data class TimerUiState(
 
 
     val cycle: Cycle? = null,
-    val isFocusMode: Boolean = true, // true = Foco, false = Pausa
+    val isFocusMode: Boolean = true,
     val currentSession: Int = 1,
     val timeLeftInMillis: Long = 0L,
+    val totalTimeInMillis: Long = 0L,
     val isPlaying: Boolean = false
 
 
 )
 
 
+// Classe que guarda o estado exato da tela do cronômetro :
 @HiltViewModel
 class TimerViewModel @Inject constructor(
 
@@ -41,6 +45,7 @@ class TimerViewModel @Inject constructor(
 
     private val _uiState = MutableStateFlow(TimerUiState())
     val uiState: StateFlow<TimerUiState> = _uiState.asStateFlow()
+    private var timerJob: Job? = null
 
 
     // Busca o ciclo no NoSQL e prepara a tela para o primeiro período de foco :
@@ -56,19 +61,166 @@ class TimerViewModel @Inject constructor(
             if (cycle != null) {
 
 
+                val focusMillis = cycle.focusDurationMinutes * 60 * 1000L
                 _uiState.update { it.copy(
 
 
                     cycle = cycle,
                     isFocusMode = true,
                     currentSession = 1,
-                    timeLeftInMillis = cycle.focusDurationMinutes * 60 * 1000L // Converte minutos para milissegundos
+                    timeLeftInMillis = focusMillis,
+                    totalTimeInMillis = focusMillis,
+                    isPlaying = false
 
 
                 )}
 
 
             }
+
+
+        }
+
+
+    }
+
+
+    // Alterna entre iniciar e pausar o cronômetro :
+    fun toggleTimer() {
+
+
+        if (_uiState.value.isPlaying) pauseTimer() else startTimer()
+
+
+    }
+
+
+    // Inicia a contagem regressiva :
+    private fun startTimer() {
+
+
+        _uiState.update { it.copy(isPlaying = true) }
+
+
+        timerJob = viewModelScope.launch {
+
+
+            while (_uiState.value.timeLeftInMillis > 0 && _uiState.value.isPlaying) {
+
+
+                delay(1000L) // Aguarda exatamente 1 segundo :
+                _uiState.update { it.copy(timeLeftInMillis = it.timeLeftInMillis - 1000L) }
+
+
+            }
+
+
+            if (_uiState.value.timeLeftInMillis <= 0L) {
+
+
+                skipToNextPhase()
+
+
+            }
+
+
+        }
+
+
+    }
+
+
+    // Pausa a contagem regressiva :
+    fun pauseTimer() {
+
+
+        _uiState.update { it.copy(isPlaying = false) }
+        timerJob?.cancel()
+
+
+    }
+
+
+    // Pula para a próxima fase (De Foco para Pausa, ou de Pausa para o Próximo Foco) :
+    fun skipToNextPhase() {
+
+
+        pauseTimer()
+
+
+        val currentState = _uiState.value
+        val cycle = currentState.cycle ?: return
+
+
+        if (currentState.isFocusMode) {
+
+
+            // Entrando no Intervalo :
+            val breakMillis = cycle.breakDurationMinutes * 60 * 1000L
+            _uiState.update { it.copy(
+
+
+                isFocusMode = false,
+                timeLeftInMillis = breakMillis,
+                totalTimeInMillis = breakMillis
+
+
+            )}
+
+
+        } else {
+
+
+            // Voltando para o Foco (Avança a Sessão) :
+            val nextSession = currentState.currentSession + 1
+
+
+            if (nextSession <= cycle.repetitions) {
+
+
+                val focusMillis = cycle.focusDurationMinutes * 60 * 1000L
+                _uiState.update { it.copy(
+
+
+                    isFocusMode = true,
+                    currentSession = nextSession,
+                    timeLeftInMillis = focusMillis,
+                    totalTimeInMillis = focusMillis
+
+
+                )}
+
+
+            } else {
+
+
+                // Fim do ciclo (Volta para o início) :
+                loadCycle(cycle.id)
+
+
+            }
+
+
+        }
+
+
+    }
+
+
+    // Reinicia o ciclo inteiro :
+    fun restartCycle() {
+
+
+        pauseTimer()
+
+
+        val cycleId = _uiState.value.cycle?.id
+
+
+        if (cycleId != null) {
+
+
+            loadCycle(cycleId)
 
 
         }
