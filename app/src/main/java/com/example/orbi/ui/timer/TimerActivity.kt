@@ -4,6 +4,7 @@ package com.example.orbi.ui.timer
 // Importações :
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
+import android.media.RingtoneManager
 import android.os.Bundle
 import android.view.View
 import android.widget.LinearLayout
@@ -48,6 +49,7 @@ class TimerActivity : AppCompatActivity() {
 
 
         observeViewModel()
+        observeSoundEvents()
 
 
     }
@@ -127,6 +129,52 @@ class TimerActivity : AppCompatActivity() {
 
 
             }
+
+
+        }
+
+
+    }
+
+
+    // Fica escutando os eventos de som disparados pela ViewModel :
+    private fun observeSoundEvents() {
+
+
+        lifecycleScope.launch {
+
+
+            viewModel.soundEvent.collect {
+
+
+                playNotificationSound()
+
+
+            }
+
+
+        }
+
+
+    }
+
+
+    // Toca o som padrão de notificação do celular do usuário :
+    private fun playNotificationSound() {
+
+
+        try {
+
+
+            val uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
+            val ringtone = RingtoneManager.getRingtone(applicationContext, uri)
+            ringtone.play()
+
+
+        } catch (e: Exception) {
+
+
+            e.printStackTrace()
 
 
         }
@@ -235,15 +283,16 @@ class TimerActivity : AppCompatActivity() {
     }
 
 
-    // Mantém a imersão visual da tela :
+    // Mantém a imersão visual da tela e impede que ela apague :
     private fun setupSystemBars() {
 
 
         window.statusBarColor = ContextCompat.getColor(this, R.color.orbi_cream)
         window.navigationBarColor = ContextCompat.getColor(this, R.color.orbi_cream)
 
-        // Definindo que a tela não se apague :
+        // Mantém a tela sempre ligada :
         window.addFlags(android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+
 
         WindowInsetsControllerCompat(window, window.decorView).apply {
 

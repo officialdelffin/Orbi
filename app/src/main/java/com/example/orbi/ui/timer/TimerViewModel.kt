@@ -9,8 +9,11 @@ import com.example.orbi.domain.repository.CycleRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -45,6 +48,11 @@ class TimerViewModel @Inject constructor(
 
     private val _uiState = MutableStateFlow(TimerUiState())
     val uiState: StateFlow<TimerUiState> = _uiState.asStateFlow()
+
+    // Evento único para disparar o som (SharedFlow não guarda estado, apenas avisa a Activity na hora exata) :
+    private val _soundEvent = MutableSharedFlow<Unit>()
+    val soundEvent: SharedFlow<Unit> = _soundEvent.asSharedFlow()
+
     private var timerJob: Job? = null
 
 
@@ -141,9 +149,12 @@ class TimerViewModel @Inject constructor(
     }
 
 
-    // Pula para a próxima fase (De Foco para Pausa, ou de Pausa para o Próximo Foco) :
+    // Pula para a próxima fase de forma automática e dispara o som :
     fun skipToNextPhase() {
 
+
+        // Descobre se o cronômetro estava rodando antes de pular a fase :
+        val wasPlaying = _uiState.value.isPlaying
 
         pauseTimer()
 
@@ -166,6 +177,11 @@ class TimerViewModel @Inject constructor(
 
 
             )}
+
+            triggerSound()
+
+            // Se estava rodando, inicia o intervalo automaticamente :
+            if (wasPlaying) startTimer()
 
 
         } else {
@@ -190,15 +206,37 @@ class TimerViewModel @Inject constructor(
 
                 )}
 
+                triggerSound()
+
+                // Se estava rodando, inicia o próximo foco automaticamente :
+                if (wasPlaying) startTimer()
+
 
             } else {
 
 
-                // Fim do ciclo (Volta para o início) :
+                // Fim do ciclo (Toca o som de fim e volta para o início pausado) :
+                triggerSound()
                 loadCycle(cycle.id)
 
 
             }
+
+
+        }
+
+
+    }
+
+
+    // Emite o evento de som para a Activity escutar :
+    private fun triggerSound() {
+
+
+        viewModelScope.launch {
+
+
+            _soundEvent.emit(Unit)
 
 
         }
