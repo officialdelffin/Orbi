@@ -167,6 +167,16 @@ class CycleAdapter(private val onStartClick: (String) -> Unit) : RecyclerView.Ad
             }
 
 
+            // 4. Ao clicar no botão Iniciar, aciona o callback enviando o ID deste ciclo para a MainActivity :
+            binding.btnStartCycle.setOnClickListener {
+
+
+                onStartClick(cycle.id)
+
+
+            }
+
+
         }
 
 

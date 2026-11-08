@@ -50,7 +50,16 @@ class MainActivity : AppCompatActivity() {
     private fun setupRecyclerView() {
 
 
-        cycleAdapter = CycleAdapter()
+        cycleAdapter = CycleAdapter { clickedCycleId ->
+
+
+            // Abre a tela de cronômetro passando o ID único do ciclo :
+            val intent = Intent(this, com.example.orbi.ui.timer.TimerActivity::class.java)
+            intent.putExtra("CYCLE_ID", clickedCycleId)
+            startActivity(intent)
+
+
+        }
 
 
         binding.rvCycles.apply {
