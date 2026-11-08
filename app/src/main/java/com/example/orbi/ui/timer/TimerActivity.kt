@@ -242,6 +242,8 @@ class TimerActivity : AppCompatActivity() {
         window.statusBarColor = ContextCompat.getColor(this, R.color.orbi_cream)
         window.navigationBarColor = ContextCompat.getColor(this, R.color.orbi_cream)
 
+        // Definindo que a tela não se apague :
+        window.addFlags(android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
 
         WindowInsetsControllerCompat(window, window.decorView).apply {
 
