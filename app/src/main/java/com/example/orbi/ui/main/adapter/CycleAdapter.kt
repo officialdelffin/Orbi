@@ -16,7 +16,7 @@ import com.example.orbi.domain.model.Cycle
 
 
 // Vincula os dados do banco NoSQL ao layout visual do cartão individual :
-class CycleAdapter : RecyclerView.Adapter<CycleAdapter.CycleViewHolder>() {
+class CycleAdapter(private val onStartClick: (String) -> Unit) : RecyclerView.Adapter<CycleAdapter.CycleViewHolder>() {
 
 
     // Lista em memória que será atualizada reativamente :
