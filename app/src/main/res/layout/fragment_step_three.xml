@@ -41,7 +41,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_step_title" />
 
 
-    <!-- A Área rolável começa ABAIXO da descrição, permitindo que os seletores subam com o teclado : -->
+    <!-- A Área rolável começa ABAIXO da descrição : -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -51,7 +51,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_step_desc">
 
 
-        <!-- Container centralizador do relógio puxado para o topo : -->
+        <!-- Container centralizador do relógio rolável puxado para o topo : -->
         <LinearLayout
             android:id="@+id/layout_time_picker"
             android:layout_width="match_parent"
@@ -90,12 +90,12 @@
             </LinearLayout>
 
 
-            <!-- Separador central ( : ) : -->
+            <!-- Separador central ( : ) alinhado à altura do número selecionado : -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
-                android:layout_marginBottom="24dp"
+                android:layout_marginTop="62dp"
                 android:text=":"
                 android:textColor="@color/orbi_dark_brown"
                 android:textSize="40sp"
