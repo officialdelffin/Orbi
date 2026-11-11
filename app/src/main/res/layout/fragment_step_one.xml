@@ -37,61 +37,80 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_step_title" />
 
 
-    <!-- Campo Obrigatório: Título -->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/layout_input_title"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="30dp"
-        android:hint="Título do ciclo"
-        app:boxStrokeColor="@color/orbi_olive"
-        app:hintTextColor="@color/orbi_olive"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+    <!-- A Área rolável começa ABAIXO da descrição, para não tampar os textos acima : -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_step_desc">
 
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_title"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textCapSentences"
-            android:maxLines="1"
-            android:textColor="@color/orbi_dark_brown" />
+            android:orientation="vertical"
+            android:paddingTop="20dp"
+            android:paddingBottom="40dp">
 
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <!-- Campo Obrigatório: Título -->
+            <!-- Alterado de 0dp para match_parent para aparecer no LinearLayout : -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_input_title"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:hint="Título do ciclo"
+                app:boxStrokeColor="@color/orbi_olive"
+                app:hintTextColor="@color/orbi_olive">
 
 
-    <!-- Campo Opcional: Descrição -->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/layout_input_desc"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="30dp"
-        android:hint="Descrição do ciclo"
-        app:boxStrokeColor="@color/orbi_olive"
-        app:hintTextColor="@color/orbi_olive"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout_input_title">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapSentences"
+                    android:maxLines="1"
+                    android:textColor="@color/orbi_dark_brown" />
 
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_desc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="top|start"
-            android:inputType="textMultiLine|textCapSentences"
-            android:minLines="3"
-            android:textColor="@color/orbi_dark_brown" />
+            </com.google.android.material.textfield.TextInputLayout>
 
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <!-- Campo Opcional: Descrição -->
+            <!-- Alterado de 0dp para match_parent e margens ajustadas : -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_input_desc"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="30dp"
+                android:hint="Descrição do ciclo"
+                app:boxStrokeColor="@color/orbi_olive"
+                app:hintTextColor="@color/orbi_olive">
+
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="top|start"
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:minLines="3"
+                    android:textColor="@color/orbi_dark_brown" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
